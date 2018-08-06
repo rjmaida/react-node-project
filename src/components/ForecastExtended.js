@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ForecastItem from "./ForecastItem";
 import transformForecast from "./../services/transformForecast";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import "./styles.css";
 
 //const days = ["lunes", "martes", "miercoles", "jueves", "viernes"];
@@ -24,15 +25,25 @@ class ForecastExtended extends Component {
   }
 
   componentDidMount() {
-    //fetch or axios
-    const url_forecast = `${api_url}?q=${this.props.city}&appid=${apy_key}`;
+    this.updateCity(this.props.city);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.city !== this.props.city) {
+      this.setState({ forecastData: null });
+      this.updateCity(nextProps.city);
+    }
+  }
+
+  updateCity = city => {
+    const url_forecast = `${api_url}?q=${city}&appid=${apy_key}`;
     fetch(url_forecast).then(data =>
       data.json().then(weather_data => {
         const forecastData = transformForecast(weather_data);
         this.setState({ forecastData });
       })
     );
-  }
+  };
 
   renderForecastItemDays(forecastData) {
     return forecastData.map(forecast => (
@@ -46,7 +57,7 @@ class ForecastExtended extends Component {
   }
 
   renderProgress = () => {
-    return "Cargando...";
+    return <CircularProgress size={50} style={{ alignItems: "center" }} />;
   };
 
   render() {
