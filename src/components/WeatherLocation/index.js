@@ -4,7 +4,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Location from './Location';
 import WeatherData from './WeatherData/index';
 import transformWeather from '../../services/transformWeather';
-import './styles.css';
+import '../styles.css';
 
 const apy_key =  '4a6a6edcc689a6b293e22fcac112e0e4';
 const api_url = 'http://api.openweathermap.org/data/2.5/weather'
@@ -47,7 +47,7 @@ class WeatherLocation extends Component {
     }
 }
 
-WeatherLocation.protoTypes = {
+WeatherLocation.PropTypes = {
     city: PropTypes.string,
     onWeatherLocationClick: PropTypes.func,
 }

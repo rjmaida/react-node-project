@@ -7,8 +7,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import { Grid, Row, Col } from "react-flexbox-grid";
-import LocationList from "./components/WeatherLocation/LocationList";
-import ForecastExtended from "./components/WeatherLocation/ForecastExtended";
+import LocationList from "./components/LocationList";
+import ForecastExtended from "./components/ForecastExtended";
 
 const theme = createMuiTheme();
 
@@ -36,11 +36,11 @@ const styles = {
 class App extends Component {
   constructor() {
     super();
-    this.state = { city: "Nueva Ciudad" };
+    this.state = { city: null };
   }
 
   handleSelectedLocation = city => {
-    this.setState({city});
+    this.setState({ city });
   };
 
   render() {
@@ -78,7 +78,7 @@ class App extends Component {
             <Col xs={12} md={6}>
               <Paper zDepth={4}>
                 <div className="details">
-                  <ForecastExtended city={city} />
+                  {city && <ForecastExtended city={city} />}
                 </div>
               </Paper>
             </Col>

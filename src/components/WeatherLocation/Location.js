@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles.css';
+import '../styles.css';
 
 const Location = ({ city }) => (// destructuring
     <div className='locationCont' >
