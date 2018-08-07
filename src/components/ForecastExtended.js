@@ -5,16 +5,6 @@ import transformForecast from "./../services/transformForecast";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import "./styles.css";
 
-//const days = ["lunes", "martes", "miercoles", "jueves", "viernes"];
-/*
-const data = {
-  temperature: 10,
-  weatherState: "normal",
-  humidity: 10,
-  wind: "normal"
-};
-*/
-
 const apy_key = "4a6a6edcc689a6b293e22fcac112e0e4";
 const api_url = "http://api.openweathermap.org/data/2.5/forecast";
 
