@@ -24,6 +24,7 @@ const LocationList = ({ cities, onSelectedLocation }) => {
 LocationList.prototypes = {
     cities: PropTypes.array.isRequired,
     onSelectedLocation: PropTypes.func,
+    
 }
 
 export default LocationList;
