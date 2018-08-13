@@ -14,12 +14,11 @@ const getWeatherCity = payload => ({ type: GET_WEATHER_CITY, payload });
 const setWeatherCity = payload => ({ type: SET_WEATHER_CITY, payload });
 
 const apy_key = "4a6a6edcc689a6b293e22fcac112e0e4";
-const api_url = "http://api.openweathermap.org/data/2.5/forecast";
-const api_url_weather = "http://api.openweathermap.org/data/2.5/weather";
+const api_url = "http://api.openweathermap.org/data/2.5/";
 
 export const setSelectedCity = payload => {
   return dispatch => {
-    const url_forecast = `${api_url}?q=${payload}&appid=${apy_key}`;
+    const url_forecast = `${api_url}forecast?q=${payload}&appid=${apy_key}`;
 
     // Activar en el estado un indicae de busqueda de datos
     dispatch(setCity(payload));
@@ -40,7 +39,7 @@ export const setWeather = payload => {
     payload.forEach(city => {
       dispatch(getWeatherCity(city));
 
-      const api_weather = `${api_url_weather}?q=${city}&appid=${apy_key}`;
+      const api_weather = `${api_url}weather?q=${city}&appid=${apy_key}`;
       fetch(api_weather)
         .then(data => {
           return data.json();
